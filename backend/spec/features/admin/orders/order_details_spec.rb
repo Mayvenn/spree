@@ -289,7 +289,9 @@ describe "Order Details", js: true do
     end
 
     before do
-      Spree::Api::BaseController.any_instance.stub :try_spree_current_user => Spree.user_class.new
+      allow(Spree.user_class).to receive(:find_by).
+                                   with(hash_including(:spree_api_key)).
+                                   and_return(Spree.user_class.new)
     end
 
     it 'should not display order tabs or edit buttons without ability' do
