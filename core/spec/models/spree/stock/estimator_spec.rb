@@ -117,7 +117,7 @@ module Spree
           before do
             backend_method.stub_chain(:calculator, :compute).and_return(0.00)
             generic_method.stub_chain(:calculator, :compute).and_return(5.00)
-            subject.stub(:shipping_methods).and_return([backend_method, generic_method])
+            allow(package).to receive(:shipping_methods).and_return([backend_method, generic_method])
           end
 
           it "does not return backend rates at all" do
