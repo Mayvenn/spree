@@ -8,7 +8,8 @@ $(document).ready ->
       data:
         product_id: ui.item.data('product-id'),
         taxon_id: $('#taxon_id').val(),
-        position: ui.item.index()
+        position: ui.item.index(),
+        token: Spree.api_key
 
   if $('#taxon_id').length > 0
     $('#taxon_id').select2
